@@ -1,0 +1,11 @@
+C++³£¼ûÎÊÌâ: ×Ö·û´®·Ö¸îº¯Êý split
+
+C++±ê×¼¿âÀïÃæÃ»ÓÐ×Ö·û·Ö¸îº¯Êýsplit £¬Õâ¿ÉÌ«²»·½±ãÁË£¬ÎÒÒÑ¾­Óöµ½>3´ÎÈçºÎ¶Ô×Ö·û´®¿ìËÙ·Ö¸îÕâ¸öÎÊÌâÁË¡£ÁÐ¼¸¸ö³£ÓÃ·½·¨ÒÔ±¸²»Ê±Ö®Ðè¡£
+
+ 
+
+·½·¨Ò»: ÀûÓÃSTL×Ô¼ºÊµÏÖsplit º¯Êý(³£ÓÃ£¬¼òµ¥£¬Ö±¹Û)
+
+Ô­ÐÍ: vector<string> split(const string &s, const string &seperator);
+
+ÊäÈëÒ»¸ö×Ö·û´®£¬Ò»¸ö·Ö¸ô·û×Ö·û´®(¿É°üº¬¶à¸ö·Ö¸ô·û)£¬·µ»ØÒ»¸ö×Ö·û´®ÏòÁ¿¡£ÕâÊÇÎÒ×îÏ²»¶µÄ·½·¨£¬ÒòÎªËü×îÖ±¹Û£¬ÔÚÆ½³£Ò²×î³£ÓÃ¡£ÊµÏÖ¼°²âÊÔ´úÂëÈçÏ
