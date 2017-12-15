@@ -1,0 +1,9 @@
+d='romantic';
+k='12345678';
+dhex=dec2hex(abs(d));
+khex=dec2hex(abs(k));
+e=DES(dhex,khex,1)
+
+e=reshape(e,8,2)
+edec=hex2dec(e)
+char(edec)
