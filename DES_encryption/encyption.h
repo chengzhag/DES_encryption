@@ -3,6 +3,7 @@
 #include <vector>
 #include <bitset>
 #include <string>
+#include <algorithm>
 
 namespace zhang
 {
@@ -27,7 +28,7 @@ namespace zhang
 	};
 
 
-	class desEncryption :encyptionAlg<64>
+	class desEncryption :public encyptionAlg<64>
 	{
 		// 初始置换表
 		const vector<int> IP = { 58, 50, 42, 34, 26, 18, 10, 2,
@@ -330,17 +331,89 @@ namespace zhang
 	};
 
 
+
 	template<size_t N>
-	class fileEncryption
+	class CFB
 	{
 		encyptionAlg<N> *alg;
+		bitset<N> iv;
 	public:
-		fileEncryption(encyptionAlg<N> *alg) :
-			alg(alg)
+		CFB(encyptionAlg<N> *alg, bitset<N> iv) :
+			alg(alg),
+			iv(iv)
 		{}
 
-		void encrypt(const bitset<64>& plain) = 0;
-		void decrypt(const bitset<64>& cipher) = 0;
+		void setIV(bitset<N> iv)
+		{
+			this->iv = iv;
+		}
+
+
+		template<class InIt, class OutIt>
+		void encrypt(InIt inBegin, InIt inEnd, OutIt outBegin)
+		{
+			union Block {
+				bitset<N> bits;
+				char chars[N / 8];
+			} block{ 0 }, old{ iv }; //存储N位原始数据块
+			size_t index = 0;
+
+			while (inBegin != inEnd)
+			{
+				block.chars[index] = *inBegin;
+				++inBegin;
+				index++;
+				if (index >= N / 8 || inBegin == inEnd)
+				{
+					//对block进行加密
+					old.bits = alg->encrypt(old.bits);
+					old.bits = old.bits^block.bits;
+					for (size_t i = 0; i < index; ++i)
+					{
+						*outBegin = old.chars[i];
+						++outBegin;
+					}
+					
+					//清空block
+					block.bits.reset();
+					index = 0;
+				}
+			}
+		}
+
+		template<class InIt, class OutIt>
+		void decrypt(InIt inBegin, InIt inEnd, OutIt outBegin)
+		{
+			union Block {
+				bitset<N> bits;
+				char chars[N / 8];
+			} block{ 0 }, old{ iv }; //存储N位原始数据块
+			size_t index = 0;
+
+			while (inBegin != inEnd)
+			{
+				block.chars[index] = *inBegin;
+				++inBegin;
+				index++;
+				if (index >= N / 8 || inBegin == inEnd)
+				{
+					//对block进行解密
+					old.bits = alg->encrypt(old.bits);
+					old.bits = old.bits^block.bits;
+					for (size_t i = 0; i < index; ++i)
+					{
+						*outBegin = old.chars[i];
+						++outBegin;
+					}
+					old.bits = block.bits;
+
+					//清空block
+					block.bits.reset();
+					index = 0;
+				}
+			}
+		}
 	};
+
 
 }
