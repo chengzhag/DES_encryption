@@ -338,7 +338,7 @@ namespace zhang
 		encyptionAlg<N> *alg;
 		bitset<N> iv;
 	public:
-		CFB(encyptionAlg<N> *alg, bitset<N> iv) :
+		CFB(encyptionAlg<N> *alg, bitset<N> iv = { 0 }) :
 			alg(alg),
 			iv(iv)
 		{}
@@ -348,6 +348,10 @@ namespace zhang
 			this->iv = iv;
 		}
 
+		void setKey(bitset<N> k)
+		{
+			alg->setKey(k);
+		}
 
 		template<class InIt, class OutIt>
 		void encrypt(InIt inBegin, InIt inEnd, OutIt outBegin)
