@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="zhang::desEncryption">
+    <Position X="1.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAEAAAAAAAAgAAAAEBAAIEgAAAAUAAAAQghAQAQ=</HashCode>
+      <FileName>encyption.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="zhang::encyptionAlg&lt;N&gt;">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAwAA=</HashCode>
+      <FileName>encyption.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="zhang::CFB&lt;N&gt;">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAACAaAA=</HashCode>
+      <FileName>encyption.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alg" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

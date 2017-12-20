@@ -1,0 +1,5 @@
+WEBENCH? Filter Designer
+Active filter designs within minutes!
+
+Active filters are vital in modern electronics; every data acquisition systems need them for bandwidth-limiting signals before ADCs as anti-aliasing filters, or after DACs as anti-imaging filters. Instrumentation also relies on them for accurate signal measurements. Active filters are used for cutoff frequencies that range from sub -1 Hz to 10 MHz, where passive filter designs would require prohibitively large component values and sizes. Their design and verification can be
+tedious and time consuming.
