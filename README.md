@@ -25,7 +25,12 @@
 - DES算法分组长度为64，此处以64作为模板参数。
 
 ### ```class CFB```
-密文反馈（CFB）算法的实现。
+密文反馈（CFB）算法的实现。实现原理如下图（引用自维基百科[分组密码工作模式](https://zh.wikipedia.org/wiki/%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F)）
+
+![image](https://github.com/pidan1231239/DES_encryption/blob/master/Cfb_encryption.png)
+
+![image](https://github.com/pidan1231239/DES_encryption/blob/master/Cfb_decryption.png)
+
 - 通过指针聚合```desEncryption```类，在实例化时传入不同加解密算法的指针可实现同种分组加密算法通用于不同加解密算法。代码示例：
 	```	
 	CFB<64> cfb(
